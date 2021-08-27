@@ -8,6 +8,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div id="content"></div>
+                <script src="{{ asset('js/marked.min.js')}}"></script>
+                <script>
+                    document.getElementById('content').innerHTML =
+                        marked('# Marked in the browser\n\nRendered by **marked**.');
+                </script>
+
                 <x-jet-welcome />
             </div>
         </div>

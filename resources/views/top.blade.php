@@ -10,6 +10,14 @@
     <div class="col-5">
         <form method="POST" action="{{ route('login') }}">
             @csrf
+            <div id="content"></div>
+            <script src="{{ asset('js/marked.min.js')}}"></script>
+            <script>
+                document.getElementById('content').innerHTML =
+                    marked('# Marked in the browser\n\nRendered by **marked**.');
+            </script>
+
+
             <table>
                 <tr>
                     <th>ユーザ名</th>
