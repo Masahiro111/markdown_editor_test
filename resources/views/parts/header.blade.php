@@ -37,20 +37,19 @@
 
                         <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                             x-state:on="Current" x-state:off="Default" aria-current="page"
-                            x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Home</a>
+                            x-state-description="Current: &quot;bg-gray-900 text-white&quot;, Default: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Dashboard</a>
 
                         <a href="#"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                            x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Comunity</a>
+                            x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Team</a>
 
                         <a href="#"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                            x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Stock</a>
+                            x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Projects</a>
 
                         <a href="#"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                            x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Post
-                            Article</a>
+                            x-state-description="undefined: &quot;bg-gray-900 text-white&quot;, undefined: &quot;text-gray-300 hover:bg-gray-700 hover:text-white&quot;">Calendar</a>
 
                     </div>
                 </div>
@@ -101,27 +100,15 @@
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700" x-state:on="Active"
                             x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem"
                             tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0"
-                            @mouseleave="activeIndex = -1" @click="open = false; focusButton()">My page</a>
+                            @mouseleave="activeIndex = -1" @click="open = false; focusButton()">Your Profile</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700"
                             :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1"
                             id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1"
-                            @click="open = false; focusButton()">Draft</a>
+                            @click="open = false; focusButton()">Settings</a>
                         <a href="#" class="block px-4 py-2 text-sm text-gray-700"
                             :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1"
                             id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1"
-                            @click="open = false; focusButton()">Request</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700"
-                            :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1"
-                            id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1"
-                            @click="open = false; focusButton()">Setting</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700"
-                            :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1"
-                            id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1"
-                            @click="open = false; focusButton()">Help</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700"
-                            :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1"
-                            id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1"
-                            @click="open = false; focusButton()">Log out</a>
+                            @click="open = false; focusButton()">Sign out</a>
                     </div>
 
                 </div>

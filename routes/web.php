@@ -23,9 +23,6 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::get('/draft/new', [PostController::class, 'index'])
-    ->name('drafts.new');
-
 Route::get('/post', [PostController::class, 'index']);
 
 Route::get('/post/create', [PostController::class, 'create']);
