@@ -12,9 +12,11 @@
 <body>
     <div style="width: 900px;" class="container max-w-full mx-auto pt-4">
 
-        <a href="/test"
-            class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow-lg">Go
-            Back</a>
+        <p class="mb-6  mt-2">
+            <a href="/test"
+                class="bg-gray-500 tracking-wide text-white px-6 py-2 inline-block shadow-lg rounded hover:shadow-lg">Go
+                Back</a>
+        </p>
 
         <form action="/test/{{ $test->id }}" method="POST">
             @method('PUT')
@@ -25,6 +27,9 @@
                 <input type="text"
                     class="h-10 bg-white border border-gray-300 rounded py-4 px-3 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0"
                     id="title" name="title" value="{{old('title', $test->title) }}">
+                @error('title')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="mb-4">
@@ -32,6 +37,9 @@
                 <textarea type="text"
                     class="h-24 bg-white border border-gray-300 rounded py-4 px-3 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0"
                     id="content" name="content">{{ old('content', $test->content) }}</textarea>
+                @error('content')
+                <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <button class="bg-indigo-500 text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow">Update
