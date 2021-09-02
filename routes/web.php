@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SampleController;
 use App\Http\Controllers\TestController;
 use App\Models\book;
 use Illuminate\Support\Facades\Request;
@@ -62,3 +63,17 @@ Route::get('/test/{id}/edit', [TestController::class, 'edit']);
 Route::put('/test/{id}', [TestController::class, 'update']);
 
 Route::delete('users/{id}', [TestController::class, 'delete']);
+
+// ----------------------------------------------------
+
+Route::get('/sample', [SampleController::class, 'index'])->name('index');
+
+Route::get('/sample/create', [SampleController::class, 'create'])->name('create');
+
+Route::post('/sample', [SampleController::class, 'store'])->name('store');
+
+Route::get('/sample/{id}/edit', [SampleController::class, 'edit'])->name('edit');
+
+Route::put('/sample/{id}', [SampleController::class, 'update'])->name('update');
+
+Route::delete('/sample/{id}', [SampleController::class, 'destroy'])->name('delete');
