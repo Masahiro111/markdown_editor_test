@@ -37,17 +37,6 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-
-        Crud::create([
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-
-        return redirect('/crud');
     }
 
     /**
@@ -69,9 +58,7 @@ class CrudController extends Controller
      */
     public function edit($id)
     {
-        $crud = Crud::find($id);
-
-        return view('/crud', compact('crud'));
+        //
     }
 
     /**
@@ -83,17 +70,7 @@ class CrudController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-
-        Crud::find($id)->update([
-            'title' => $request->title,
-            'contet' => $request->content,
-        ]);
-
-        return redirect('/crud');
+        //
     }
 
     /**
@@ -104,8 +81,6 @@ class CrudController extends Controller
      */
     public function destroy($id)
     {
-        Crud::find($id)->delete();
-
-        return redirect('/crud');
+        //
     }
 }
