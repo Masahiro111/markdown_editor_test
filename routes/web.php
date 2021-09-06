@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\TestController;
 use App\Models\book;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,18 +46,3 @@ Route::post('/books', function (Request $request) {
 
 Route::delete('/book/{book}', function (Book $book) {
 });
-
-
-// ----------------------------------------------------
-
-Route::get('/test', [TestController::class, 'index']);
-
-Route::get('/test/create', [TestController::class, 'create']);
-
-Route::post('/test', [TestController::class, 'store']);
-
-Route::get('/test/{id}/edit', [TestController::class, 'edit']);
-
-Route::put('/test/{id}', [TestController::class, 'update']);
-
-Route::delete('users/{id}', [TestController::class, 'delete']);
