@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\book;
-use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +20,3 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/books', function () {
-    return view('books');
-})->name('books');
-
-Route::post('/books', function (Request $request) {
-});
-
-Route::delete('/book/{book}', function (Book $book) {
-});
