@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CrudController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\TestController;
 use App\Models\book;
@@ -78,17 +77,3 @@ Route::get('/sample/{id}/edit', [SampleController::class, 'edit'])->name('edit')
 Route::put('/sample/{id}', [SampleController::class, 'update'])->name('update');
 
 Route::delete('/sample/{id}', [SampleController::class, 'destroy'])->name('delete');
-
-// ----------------------------------------------------
-
-Route::get('/crud', [CrudController::class, 'index']);
-
-Route::get('/crud/create', [CrudController::class, 'create']);
-
-Route::post('/crud', [CrudController::class, 'store']);
-
-Route::get('/crud/{id}/edit', [CrudController::class, 'edit']);
-
-Route::put('/crud/{id}', [CrudController::class, 'update']);
-
-Route::delete('/crud/{id}', [CrudController::class, 'delete']);
