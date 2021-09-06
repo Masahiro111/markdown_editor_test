@@ -3,7 +3,6 @@
 use App\Models\book;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,16 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/books', function () {
-    $validator = Validator::make($request->all(), [
-        'item_name' => 'required|max:255',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/books')
-            ->withInput()
-            ->withErrors($validator);
-    }
-
     return view('books');
 })->name('books');
 
