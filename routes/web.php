@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MemoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/memo', function () {
-    return view('memo');
-})->name('memo');
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/memo', [MemoController::class, 'index'])->name('memo.index');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/memo/store', [MemoController::class, 'store'])->name('memo.store');
