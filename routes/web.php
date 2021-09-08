@@ -30,3 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/memo/select', [MemoController::class, 'select'])->name('memo.select');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/memo/update', [MemoController::class, 'update'])->name('memo.update');
