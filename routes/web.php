@@ -27,3 +27,6 @@ Route::middleware(['auth:sanctum', 'verified'])
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->get('/memo/store', [MemoController::class, 'store'])->name('memo.store');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/memo/select', [MemoController::class, 'select'])->name('memo.select');

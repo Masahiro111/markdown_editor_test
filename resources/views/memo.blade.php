@@ -16,7 +16,7 @@
                         <div class="w-1/4 h-full m-0 p-4 border-left border-right bg-gray-50 border-r border-gray-300">
                             <div class="flex justify-between pt-2">
                                 <div class="">
-                                    xxxさん、こんにちは。
+                                    {{ $name }}
                                 </div>
                                 <div class="pr-1">
                                     <a href="{{ route('memo.store') }}" class="bg-green-500 text-white inline-block h-6 w-6">
@@ -34,42 +34,63 @@
                                 メモリスト
                             </div>
                             <div class="left-memo-list list-group-flush p-0">
-                                <a href="" class="list-group-item list-group-item-action">
+
+                                @if ($memos->count() === 0)
+                                <div class="pl-3 pt-3 h5 text-info text-center">
+                                    <i class="far fa-surprise"></i>メモがありません。
+                                </div>
+                                @endif
+                                @foreach ($memos as $memo)
+                                <a href="{{ route('memo.select', ['id' => $memo->id]) }}" class="list-group-item list-group-item-action  @if ($select_memo) {{ $select_memo->id == $memo->id ? 'active' : '' }} @endif ">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">タイトル</h5>
-                                        <small>2020/08/01 12:00</small>
+                                        <h5 class="mb-1">{{ $memo->title }} </h5>
+                                        <small>{{ date('Y/m/d H:i', strtotime($memo->updated_at)) }}</small>
                                     </div>
                                     <p class="mb-1">
-                                        詳細内容XXXXXXXXXXX
-                                    </p>
-                                </a>
+                                        @if (mb_strlen($memo->content) <= 100)
+                                           {{ $memo->content }}
+                                           @else
+                                           {{ mb_substr($memo->content, 0, 100) . "..." }}
+                                           @endif
+                                           </p>
+                                           </a>
+                                           @endforeach
+
+                                           </div>
+                                           </div>
+
+                                           <div class="w-3/4 h-full m-0 p-4">
+                                            <!-----ここから追加する----->
+                                            @if ($select_memo)
+                                            <form class="w-full h-full" method="post">
+                                                @csrf
+                                                <input type="hidden" name="edit_id" value="{{ $select_memo->id }}" />
+                                                <div id="memo-menu">
+                                                    <button type="button" class="bg-red-500 text-white inline-block h-6 w-6" formaction="">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" class="bg-gray-500 text-white inline-block h-6 w-6" formaction="">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <input type="text" id="memo-title" name="edit_title" placeholder="タイトルを入力する..." value="{{ $select_memo->title }}" />
+                                                <textarea id="memo-content" name="edit_content" placeholder="内容を入力する...">{{ $select_memo->content }}</textarea>
+                                            </form>
+                                            @else
+                                            <div class="mt-3 alert alert-info">
+                                                <i class="fas fa-info-circle"></i>メモを新規作成するか選択してください。
+                                            </div>
+                                            @endif
                             </div>
                         </div>
-
-                        <div class="w-3/4 h-full m-0 p-4">
-                            <form class="w-full h-full" method="post">
-                                <input type="hidden" name="edit_id" value="" />
-                                <div id="memo-menu">
-                                    <button type="button" class="bg-red-500 text-white inline-block h-6 w-6" formaction="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                        </svg>
-                                    </button>
-                                    <button type="button" class="bg-gray-500 text-white inline-block h-6 w-6" formaction="">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <input type="text" id="memo-title" name="edit_title" placeholder="タイトルを入力する..." value="" />
-                                <textarea id="memo-content" name="edit_content" placeholder="内容を入力する..."></textarea>
-                            </form>
-                        </div>
                     </div>
-                </div>
-                <!-- /memo frame -->
+                    <!-- /memo frame -->
 
+                </div>
             </div>
         </div>
-    </div>
 </x-app-layout>
