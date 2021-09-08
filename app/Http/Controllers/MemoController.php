@@ -10,7 +10,13 @@ class MemoController extends Controller
 {
     public function index()
     {
-        return view('memo');
+        $memos = Memo::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
+
+        return view('memo', [
+            'name' => Auth::user()->name,
+            'memos' => $memos,
+            'select_memo' => session()->get('select_memo'),
+        ]);
     }
 
     public function store()
@@ -20,6 +26,14 @@ class MemoController extends Controller
             'title' => '新規メモ',
             'content' => '',
         ]);
+
+        return redirect()->route('memo.index');
+    }
+
+    public function select(Request $request)
+    {
+        $memo = Memo::find($request->id);
+        session()->put('select_memo', $memo);
 
         return redirect()->route('memo.index');
     }
