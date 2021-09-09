@@ -33,3 +33,6 @@ Route::middleware(['auth:sanctum', 'verified'])
 
 Route::middleware(['auth:sanctum', 'verified'])
     ->post('/memo/update', [MemoController::class, 'update'])->name('memo.update');
+
+Route::middleware(['auth:sanctum', 'verified'])
+    ->post('/memo/delete', [MemoController::class, 'delete'])->name('memo.delete');
